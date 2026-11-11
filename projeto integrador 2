@@ -6,10 +6,13 @@
   <meta name="description" content="Projeto Sol + Água: aprenda como a radiação solar aquece a piscina. Simuladores interativos, espectro eletromagnético e acessibilidade completa." />
   <title>Sol + Água | Radiação Solar e o Aquecimento da Piscina</title>
 
-  <!-- Fonte para dislexia -->
+  <!-- Fonte para dislexia (Open-Dyslexic via CDN, pois não está disponível no Google Fonts) -->
+  <link href="https://fonts.cdnfonts.com/css/open-dyslexic" rel="stylesheet">
+
+  <!-- Fonte Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=OpenDyslexic&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
     /* ============ RESET E VARIÁVEIS ============ */
@@ -47,7 +50,7 @@
     body.alto-contraste a { color: #FFD700 !important; text-decoration: underline !important; }
 
     /* Modo Dislexia */
-    body.dislexia { font-family: 'OpenDyslexic', 'Inter', sans-serif !important; letter-spacing: 0.05em; line-height: 1.8; font-size: 1.1em; }
+    body.dislexia { font-family: 'Open-Dyslexic', 'OpenDyslexic', 'Inter', sans-serif !important; letter-spacing: 0.05em; line-height: 1.8; font-size: 1.1em; }
     body.dislexia * { font-family: inherit !important; }
 
     /* Modo Fonte Grande */

@@ -6,7 +6,7 @@
   <meta name="description" content="Projeto Sol + Água: aprenda como a radiação solar aquece a piscina. Simuladores interativos, espectro eletromagnético e acessibilidade completa." />
   <title>Sol + Água | Radiação Solar e o Aquecimento da Piscina</title>
 
-  <!-- Fonte para dislexia (Open-Dyslexic via CDN, pois não está disponível no Google Fonts) -->
+  <!-- Fonte para dislexia (Open-Dyslexic via CDN) -->
   <link href="https://fonts.cdnfonts.com/css/open-dyslexic" rel="stylesheet">
 
   <!-- Fonte Inter -->
@@ -43,7 +43,7 @@
       --cor-agua-escura: #000;
       --sombra: 0 0 0 2px #FFD700;
     }
-    body.alto-contraste .card, body.alto-contraste header, body.alto-contraste footer {
+    body.alto-contraste .card, body.alto-contraste header, body.alto-contraste footer, body.alto-contraste details {
       background: #000 !important;
       border: 2px solid #FFD700 !important;
     }
@@ -239,6 +239,57 @@
       color: var(--cor-sol);
     }
 
+    /* ============ QUESTÕES ORIENTADORAS (DETAILS) ============ */
+    .questoes-container {
+      display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;
+    }
+    .questao-item {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: var(--sombra);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .questao-item:nth-child(1) { border-left: 5px solid var(--cor-sol); }
+    .questao-item:nth-child(2) { border-left: 5px solid var(--cor-agua); }
+    .questao-item:nth-child(3) { border-left: 5px solid var(--cor-sol-forte); }
+
+    .questao-item summary {
+      padding: 1.25rem;
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--cor-texto);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .questao-item summary::-webkit-details-marker { display: none; }
+    .questao-item summary:hover { background: rgba(0,0,0,0.02); }
+    .questao-item summary .seta {
+      transition: transform 0.3s ease;
+      font-size: 0.8rem;
+      color: var(--cor-texto-claro);
+    }
+    .questao-item[open] summary .seta { transform: rotate(180deg); }
+    
+    .questao-resposta {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+      color: var(--cor-texto-claro);
+      line-height: 1.7;
+      animation: sweep 0.3s ease-in-out;
+    }
+    .questao-resposta ul {
+      margin-top: 0.75rem;
+      padding-left: 1.5rem;
+      list-style-type: disc;
+    }
+    @keyframes sweep {
+      0%    { opacity: 0; transform: translateY(-10px); }
+      100%  { opacity: 1; transform: translateY(0); }
+    }
+
     /* ============ ESPECTRO INTERATIVO ============ */
     .espectro-container {
       background: #fff; border-radius: var(--radius);
@@ -271,10 +322,6 @@
       min-height: 120px;
     }
     .espectro-info h4 { color: var(--cor-agua-escura); margin-bottom: 0.5rem; }
-    .comprimento-onda {
-      font-family: monospace; font-size: 1.2rem;
-      color: var(--cor-sol-forte); font-weight: 700;
-    }
 
     /* ============ SIMULADOR PISCINA ============ */
     .simulador {
@@ -379,23 +426,6 @@
       font-weight: 700; margin-bottom: 0.5rem;
     }
     .formula-box .descricao { color: var(--cor-texto-claro); font-size: 0.95rem; }
-
-    /* ============ VÍDEO LIBRAS ============ */
-    .libras-box {
-      background: linear-gradient(135deg, var(--cor-agua-escura), var(--cor-agua));
-      color: #fff; padding: 2rem;
-      border-radius: var(--radius);
-      margin: 2rem 0; text-align: center;
-    }
-    .libras-box .placeholder-video {
-      background: rgba(0,0,0,0.3);
-      aspect-ratio: 16/9;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      margin: 1rem auto; max-width: 500px;
-      border: 3px dashed rgba(255,255,255,0.5);
-      font-size: 1.1rem;
-    }
 
     /* ============ SUSTENTABILIDADE ============ */
     .sustentabilidade {
@@ -528,28 +558,47 @@
         (≈ 300.000 km/s) e atinge a Terra em cerca de 8 minutos e 20 segundos.
       </p>
 
-      <div class="libras-box" aria-label="Vídeo em Libras sobre a introdução">
-        <h3>🤟 Conteúdo em Libras</h3>
-        <div class="placeholder-video" role="img" aria-label="Espaço reservado para vídeo em Língua Brasileira de Sinais">
-          📹 Vídeo em Libras (estrutura preparada)
-        </div>
-        <p>Este conteúdo terá tradução em Língua Brasileira de Sinais.</p>
+      <h3>Questões orientadoras deste módulo</h3>
+      <div class="questoes-container">
+        
+        <details class="questao-item">
+          <summary>
+            <span><strong>1.</strong> Como a radiação solar se propaga até a superfície terrestre?</span>
+            <span class="seta" aria-hidden="true">▼</span>
+          </summary>
+          <div class="questao-resposta">
+            <p>A radiação solar se propaga através do vácuo do espaço na forma de <strong>ondas eletromagnéticas</strong>, viajando à velocidade da luz (aproximadamente 300.000 km/s). Ao atingir a atmosfera terrestre, parte dela é refletida, absorvida ou espalhada, mas uma parcela significativa (cerca de 70%) atravessa e chega à superfície, levando cerca de 8 minutos e 20 segundos para percorrer os 150 milhões de quilômetros que nos separam do Sol.</p>
+          </div>
+        </details>
+
+        <details class="questao-item">
+          <summary>
+            <span><strong>2.</strong> Qual é a diferença entre radiação ultravioleta, visível e infravermelha?</span>
+            <span class="seta" aria-hidden="true">▼</span>
+          </summary>
+          <div class="questao-resposta">
+            <p>A diferença principal está no <strong>comprimento de onda</strong> e na <strong>energia dos fótons</strong>:</p>
+            <ul>
+              <li><strong>Ultravioleta (UV, 100-400 nm):</strong> Alta energia. Responsável por efeitos químicos, como a degradação do cloro e o desbotamento de materiais da piscina.</li>
+              <li><strong>Luz Visível (400-700 nm):</strong> Energia média. É a parte que nossos olhos enxergam, penetrando alguns centímetros na água e dando a cor azul característica.</li>
+              <li><strong>Infravermelho (IV, 700 nm - 1 mm):</strong> Baixa energia por fóton, mas muito abundante. É o principal responsável pela sensação de calor e pelo aquecimento direto da água.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="questao-item">
+          <summary>
+            <span><strong>3.</strong> Como a energia da radiação é transferida para a água da piscina?</span>
+            <span class="seta" aria-hidden="true">▼</span>
+          </summary>
+          <div class="questao-resposta">
+            <p>A transferência ocorre principalmente por <strong>absorção</strong>. Quando os fótons da radiação solar (especialmente os do infravermelho e parte do espectro visível) atingem a água, sua energia é absorvida pelas moléculas de H₂O. Isso faz com que as moléculas vibrem e se movam mais rapidamente. Esse aumento da energia cinética molecular se manifesta macroscopicamente como um aumento na temperatura da água (calor sensível). A eficiência desse processo é potencializada pelo uso de capas térmicas escuras, que possuem alta absortividade.</p>
+          </div>
+        </details>
+
       </div>
 
-      <h3>Questões orientadoras deste módulo</h3>
-      <ul style="list-style: none; padding: 0;">
-        <li style="padding: 0.75rem; background: #fff; margin: 0.5rem 0; border-radius: 8px; border-left: 4px solid var(--cor-sol);">
-          <strong>1.</strong> Como a radiação solar se propaga até a superfície terrestre?
-        </li>
-        <li style="padding: 0.75rem; background: #fff; margin: 0.5rem 0; border-radius: 8px; border-left: 4px solid var(--cor-agua);">
-          <strong>2.</strong> Qual é a diferença entre radiação ultravioleta, visível e infravermelha?
-        </li>
-        <li style="padding: 0.75rem; background: #fff; margin: 0.5rem 0; border-radius: 8px; border-left: 4px solid var(--cor-sol-forte);">
-          <strong>3.</strong> Como a energia da radiação é transferida para a água da piscina?
-        </li>
-      </ul>
-
-      <div class="formula-box" role="math" aria-label="Equação da velocidade da luz">
+      <div class="formula-box" role="math" aria-label="Equação da velocidade da luz" style="margin-top: 2rem;">
         <div class="formula">c = λ · f</div>
         <div class="descricao">
           Onde <strong>c</strong> é a velocidade da luz (3×10⁸ m/s), <strong>λ</strong> é o comprimento de onda
